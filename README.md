@@ -1,2 +1,2 @@
 # malnutritiondectsys
-malnutrition detection system 
+malnutrition detection system using deeplearning
