@@ -1,82 +1,123 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template, redirect, url_for, session
 from flask_cors import CORS
 from tensorflow.keras.models import load_model
 from PIL import Image
 import numpy as np
 
+# ======================
+# App setup
+# ======================
 app = Flask(__name__)
+app.secret_key = "root0123"
 CORS(app)
 
-# Load your trained MobileNetV2 model
-model = load_model('malnutrition_mobilenetv2_final.keras')
+
+model = load_model("malnutrition_mobilenetv2_final.keras")
+
+# ======================
+# Routes
+# ======================
+
+@app.route("/")
+def home():
+    if "user" not in session:
+        return redirect(url_for("login"))
+    return render_template("index_new.html")
+
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
+
+        # Demo credentials
+        if username == "admin" and password == "root0123":
+            session["user"] = username
+            return redirect(url_for("home"))
+
+        return render_template("login.html", error="Invalid credentials")
+
+    return render_template("login.html")
+
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect(url_for("login"))
+
 
 @app.route("/predict", methods=["POST"])
 def predict():
     try:
-        # Get uploaded image and form data
-        image = request.files['image']
-        age = request.form.get('age')
-        weight = request.form.get('weight')
+        # -------- Inputs --------
+        age = request.form.get("age")
+        weight = request.form.get("weight")
+        image = request.files.get("image")
 
-        # Validate inputs
-        if not age or not weight:
-            return jsonify({"error": "Missing age or weight"}), 400
+        if not age or not weight or not image:
+            return jsonify({"error": "Missing age, weight, or image"}), 400
 
         age = float(age)
         weight = float(weight)
 
-        # Rule-based check
+        # -------- Rule-based check --------
         healthy_threshold = 2 * (age + 5)
-        rule_based_label = "Healthy" if weight >= healthy_threshold else "Malnourished"
-        
-        # Preprocess image for model prediction
-        img = Image.open(image).convert('RGB')
+        rule_label = "Healthy" if weight >= healthy_threshold else "Malnourished"
+
+        # -------- Image preprocessing --------
+        img = Image.open(image).convert("RGB")
         img = img.resize((224, 224))
         img_array = np.array(img) / 255.0
         img_array = np.expand_dims(img_array, axis=0)
 
-        # Predict using model
-        prediction = model.predict(img_array)[0][0]
-        image_label = "Malnourished" if prediction > 0.5 else "Healthy"
-        confidence = float(prediction) if prediction > 0.5 else float(1 - prediction)
+        # -------- Model prediction --------
+        pred =float(model.predict(img_array)[0][0])
+        image_label = "Malnourished" if pred > 0.5 else "Healthy"
+        confidence = float(pred if pred > 0.5 else (1 - pred))
 
-        # Final result: Malnourished if either model or rule says so
-        final_label = "Malnourished" if image_label == "Malnourished" or rule_based_label == "Malnourished" else "Healthy"
-       
-        # Diet Recommendation Logic
-        recommendation = ""
+        # -------- Final decision --------
+        final_label = (
+            "Healthy"
+    if image_label == "Healthy" and rule_label == "Healthy"
+    else "Malnourished"
+)
+        # -------- Recommendation --------
         message = ""
-        
-        # Check if there's a contradiction between the model's image prediction and rule-based check
-        if final_label == "Healthy" and rule_based_label == "Malnourished":
-            message = "⚠️ The child appears healthy based on the image, but is underweight according to the weight criteria. It's important to monitor their growth and ensure they receive adequate nutrition."
-        
-        # Malnourished conditions
-        elif final_label == "Malnourished":
-            if age <= 0.5:  # 0 to 6 months
-                recommendation = "Ensure exclusive breastfeeding on demand, day and night. Consult a pediatrician if weight gain is not observed."
-            elif age <= 2:  # 6 months to 2 years
-                recommendation = "Introduce complementary foods rich in nutrients like mashed fruits, lentils, and iron-rich cereals along with breastfeeding."
-            else:  # Above 2 years
-                recommendation = "Provide a balanced diet with proteins, carbohydrates, vitamins, and minerals. Prioritize nutrient-dense foods like eggs, dairy, leafy greens, and pulses."
-        else:
-            recommendation = "Maintain a balanced diet to ensure healthy growth."
+        if final_label == "Healthy" and rule_label == "Malnourished":
+            message = (
+                "⚠️ Image suggests healthy appearance, but weight is below standard."
+            )
 
-        # Return all details as JSON
+        if final_label == "Malnourished":
+            if age <= 0.5:
+                recommendation = "Exclusive breastfeeding recommended."
+            elif age <= 2:
+                recommendation = "Introduce nutrient-rich complementary foods."
+            else:
+                recommendation = "Provide balanced diet with proteins and micronutrients."
+        else:
+            recommendation = "Maintain a balanced nutritious diet."
+
+        # -------- Response --------
         return jsonify({
+            "status": "success",
             "label": final_label,
             "confidence": round(confidence * 100, 2),
             "image_label": image_label,
-            "rule_label": rule_based_label,
+            "rule_label": rule_label,
             "age": age,
             "weight": weight,
             "recommendation": recommendation,
-            "message": message  # Include the new message
+            "message": message
         })
 
     except Exception as e:
-        print("Prediction Error:", str(e))
+        print("Prediction error:", e)
         return jsonify({"error": str(e)}), 500
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
+
