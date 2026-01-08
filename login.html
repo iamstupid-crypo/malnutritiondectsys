@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - FeedHope: Fueling Futures</title>
+
+    <!-- ✅ CSS via Flask static -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login-style.css') }}">
+
+    <!-- ✅ JS via Flask static -->
+    <script src="{{ url_for('static', filename='js/login-functionality.js') }}" defer></script>
+</head>
+
+<body>
+
+    <!-- Background Animation Elements -->
+    <div class="background-elements">
+        <div class="floating-element heart">💚</div>
+        <div class="floating-element star">⭐</div>
+        <div class="floating-element sparkle">✨</div>
+        <div class="floating-element bowl">🍲</div>
+        <div class="floating-element hope">🌟</div>
+        <div class="floating-element child">👶</div>
+    </div>
+
+    <!-- Login Container -->
+    <div class="login-container">
+        <div class="login-wrapper">
+
+            <!-- Brand Section -->
+            <div class="brand-section">
+                <div class="brand-logo">
+                    <h1>FeedHope</h1>
+                    <span class="brand-tagline">Fueling Futures</span>
+                </div>
+                <div class="brand-illustration">
+                    <div class="child-avatar">
+                        <div class="avatar-face">😊</div>
+                        <div class="avatar-glow"></div>
+                    </div>
+                    <div class="mission-text">
+                        <p>Join our mission to give every child the nutrition they deserve</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Forms Section -->
+            <div class="forms-section">
+
+                <!-- ✅ LOGIN FORM -->
+                <div class="form-container login-form active">
+                    <div class="form-header">
+                        <h2>Welcome Back!</h2>
+                        <p>Sign in to continue your journey of hope</p>
+                    </div>
+
+                    {% if error %}
+                        <p style="color:red; text-align:center;">{{ error }}</p>
+                    {% endif %}
+
+                    <!-- 🔑 IMPORTANT PART -->
+                    <form class="auth-form" method="POST" action="/login">
+
+                        <div class="form-group">
+                            <label class="form-label">
+                                <span class="label-icon">👤</span>
+                                Username or Email
+                            </label>
+                            <input type="text" name="username" class="form-input" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">
+                                <span class="label-icon">🔒</span>
+                                Password
+                            </label>
+                            <input type="password" name="password" class="form-input" required>
+                        </div>
+
+                        <button type="submit" class="submit-btn login-btn">
+                            🔐 Sign In
+                        </button>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
