@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FeedHope: Fueling Futures</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/feedhope-style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/empowerment-illustration.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/hero-girl-animation.css') }}">
+
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h1>FeedHope</h1>
+                    <span class="logo-tagline">Fueling Futures</span>
+                </div>
+                
+                <div class="nav-menu" id="navMenu">
+                    <a href="#home" class="nav-link">FeedHope</a>
+                    <a href="#detection" class="nav-link btn-primary">
+                        🍲 Detection System
+                    </a>
+                    <a href="/login">Login</a>
+
+                </div>
+                
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-menu-content">
+                <button class="menu-close" id="menuClose">&times;</button>
+                <div class="mobile-menu-items">
+                    <a href="#home" class="mobile-nav-link">🏠 Home</a>
+                    <a href="#detection" class="mobile-nav-link">🔍 Detection System</a>
+                    <a href="#user-guide" class="mobile-nav-link">📖 User Guide</a>
+                    <a href="#resources" class="mobile-nav-link">📚 Resources</a>
+                    <a href="#stories" class="mobile-nav-link">⭐ Success Stories</a>
+                    <a href="#about" class="mobile-nav-link">ℹ️ About Us</a>
+                    <a href="#contact" class="mobile-nav-link">📞 Contact Us</a>
+                    <a href="login.html" class="mobile-nav-link login-btn">🔐 Login</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-message" id="heroMessage">
+                        <h1 class="hero-title sad-message" id="sadMessage">
+                            Malnutrition steals childhood
+                        </h1>
+                        <h1 class="hero-title happy-message" id="happyMessage">
+                            Because Every Child Deserves a Strong Tomorrow
+                        </h1>
+                    </div>
+                    
+                    <p class="hero-description" id="heroDescription">
+                        <span class="sad-description">Every 10 seconds, malnutrition takes another young life. But with early detection and proper nutrition, we can change this story.</span>
+                        <span class="happy-description">AI-powered malnutrition detection and personalized nutrition plans to give every child the healthy start they deserve.</span>
+                    </p>
+                    
+                    <div class="hero-cta" id="heroCTA">
+                        <a href="#detection" class="btn-cta">
+                            <span class="bowl-icon"></span>
+                            Detection System
+                        </a>
+                        <a href="#about" class="btn-secondary-outline">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <div class="hero-girl-illustration" id="heroGirlIllustration">
+                        <!-- Girl Character (6-8 years old) -->
+                        <div class="hero-girl-character">
+                            <!-- Girl Head -->
+                            <div class="hero-girl-head">
+                                <div class="hero-girl-hair"></div>
+                                <div class="hero-girl-eyes">
+                                    <div class="hero-eye left-eye"></div>
+                                    <div class="hero-eye right-eye"></div>
+                                </div>
+                                <div class="hero-girl-mouth" id="heroGirlMouth"></div>
+                                <div class="hero-girl-cheeks"></div>
+                                <div class="hero-tears" id="heroTears">
+                                    <div class="hero-tear tear-left"></div>
+                                    <div class="hero-tear tear-right"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Girl Body -->
+                            <div class="hero-girl-body">
+                                <div class="hero-girl-arms">
+                                    <div class="hero-arm left-arm"></div>
+                                    <div class="hero-arm right-arm"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Girl Legs -->
+                            <div class="hero-girl-legs">
+                                <div class="hero-leg"></div>
+                                <div class="hero-leg"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Sparkles for happy state -->
+                        <div class="hero-sparkles" id="heroSparkles">
+                            <div class="hero-sparkle sparkle-1">✨</div>
+                            <div class="hero-sparkle sparkle-2">⭐</div>
+                            <div class="hero-sparkle sparkle-3">💫</div>
+                            <div class="hero-sparkle sparkle-4">🌟</div>
+                        </div>
+                        
+                        <!-- Hope Aura -->
+                        <div class="hero-hope-aura" id="heroHopeAura"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+            <span>Scroll to transform lives</span>
+        </div>
+    </section>
+
+    <!-- Empowerment Section -->
+    <section id="empowerment" class="empowerment">
+        <div class="empowerment-content">
+            <div class="empowerment-text">
+                <div class="subtitle">Education begins with nourishment</div>
+                <h2>From Hunger to Learning</h2>
+                <p>With the right nutrition, every child can focus on their studies and reach their full potential. Watch as proper nourishment transforms hunger into hope, weakness into wisdom, and dreams into academic achievements.</p>
+                
+                <div class="empowerment-cta">
+                    <a href="#detection" class="detection-cta-btn">
+                        <span class="bowl-icon"></span>
+                        Detection System
+                    </a>
+                </div>
+            </div>
+            
+            <div class="empowerment-visual">
+                <div class="girl-illustration">
+                    <div class="girl-character">
+                        <!-- Girl Head -->
+                        <div class="girl-head">
+                            <div class="girl-hair"></div>
+                            <div class="girl-eyes">
+                                <div class="eye"></div>
+                                <div class="eye"></div>
+                            </div>
+                            <div class="girl-smile"></div>
+                            <div class="girl-cheeks"></div>
+                        </div>
+                        
+                        <!-- Girl Body -->
+                        <div class="girl-body">
+                            <div class="girl-arms">
+                                <div class="arm left-arm">
+                                    <div class="bicep"></div>
+                                </div>
+                                <div class="arm right-arm">
+                                    <div class="bicep"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Girl Legs -->
+                        <div class="girl-legs">
+                            <div class="leg"></div>
+                            <div class="leg"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Food Bowl -->
+                    <div class="food-bowl">
+                        <div class="bowl">
+                            <div class="food-items">
+                                <div class="food-item">📚</div>
+                                <div class="food-item">✏️</div>
+                                <div class="food-item">📖</div>
+                                <div class="food-item">🖊️</div>
+                                <div class="food-item">📝</div>
+                                <div class="food-item">🎒</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Strength Effects -->
+                    <div class="strength-effects">
+                        <div class="confidence-aura"></div>
+                        <div class="power-sparkles">
+                            <div class="sparkle">✨</div>
+                            <div class="sparkle">⭐</div>
+                            <div class="sparkle">💫</div>
+                            <div class="sparkle">🌟</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detection System Section -->
+    <section id="detection" class="detection-section">
+        <div class="detection-header">
+            <h2>🔍 AI-Powered Malnutrition Detection</h2>
+            <p class="detection-subtitle">Upload a child's photo and provide basic information for instant analysis</p>
+        </div>
+        
+        <div class="detection-container">
+            <form id="detectionform" class="enhanced-form">
+                <div class="form-group">
+                    <label for="age" class="form-label">
+                        <span class="label-icon">👶</span>
+                        Age (in years)
+                    </label>
+                    <input type="number" id="age" name="age" placeholder="e.g., 2.5" required min="0" max="6" step="0.1" class="form-input">
+                    <div class="input-feedback" id="age-feedback"></div>
+                </div>
+          
+                <div class="form-group">
+                    <label for="weight" class="form-label">
+                        <span class="label-icon">⚖️</span>
+                        Weight (in kg)
+                    </label>
+                    <input type="number" id="weight" name="weight" placeholder="e.g., 12.5" step="0.1" required class="form-input">
+                    <div class="input-feedback" id="weight-feedback"></div>
+                </div>
+          
+                <div class="form-group image-upload-group">
+                    <label for="imageInput" class="form-label">
+                        <span class="label-icon">📸</span>
+                        Upload Child's Photo
+                    </label>
+                    <div class="file-upload-container">
+                        <input type="file" id="imageInput" name="image" accept="image/*" required class="file-input">
+                        <label for="imageInput" class="file-upload-label">
+                            <span class="upload-icon">📁</span>
+                            <span class="upload-text">Choose Image</span>
+                        </label>
+                        <div class="image-preview" id="imagePreview"></div>
+                    </div>
+                    <div class="input-feedback" id="image-feedback"></div>
+                </div>
+          
+                <button type="submit" class="detect-button">
+                    <span class="button-text">🔍 Analyze Now</span>
+                    <div class="loading-spinner" id="loadingSpinner"></div>
+                </button>
+            </form>
+            
+            <div id="result" class="result-container"></div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="about-section">
+        <div class="section-container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About FeedHope</h2>
+                    <p class="lead">
+                        At FeedHope, we believe that every child deserves a healthy start in life. Our mission is to combat malnutrition through innovative, AI-powered detection and personalized nutrition plans tailored to individual needs.
+                    </p>
+                    <p>
+                        By harnessing the power of technology, we identify nutritional deficiencies and create customized meal plans that not only nourish but also empower families to thrive. Our holistic approach ensures that we address the root causes of malnutrition, fostering a healthier future for generations to come.
+                    </p>
+                    <p>
+                        Join us in our journey to eradicate hunger and malnutrition, one meal at a time. Together, we can build a world where every child has the opportunity to grow, learn, and dream without the burden of hunger.
+                    </p>
+                </div>
+                <div class="about-visual">
+                    <div class="mission-illustration">
+                        <div class="globe"></div>
+                        <div class="children-around-globe">
+                            <div class="child child-1">👧</div>
+                            <div class="child child-2">👦</div>
+                            <div class="child child-3">👧</div>
+                            <div class="child child-4">👦</div>
+                        </div>
+                        <div class="heart-pulse">💚</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Guide Section -->
+    <section id="user-guide" class="guide-section">
+        <div class="section-container">
+            <h2>How It Works</h2>
+            <div class="guide-steps">
+                <div class="step">
+                    <div class="step-icon">📝</div>
+                    <div class="step-content">
+                        <h3>Step 1: Fill the Form</h3>
+                        <p>Enter the child's age, weight, and height in our detection form.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-icon">🔍</div>
+                    <div class="step-content">
+                        <h3>Step 2: Get Results</h3>
+                        <p>Receive instant malnutrition status powered by our AI technology.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-icon">🥗</div>
+                    <div class="step-content">
+                        <h3>Step 3: Follow Recommendations</h3>
+                        <p>Get personalized, tailored diet suggestions for optimal nutrition.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories Section -->
+    <section id="stories" class="stories-section">
+        <div class="section-container">
+            <h2>Inspiring Success Stories</h2>
+            <p class="section-subtitle">"Every meal shared is a dream nurtured, every story a testament to hope."</p>
+            
+            <div class="stories-grid">
+                <div class="story-card">
+                    <div class="story-avatar">👧</div>
+                    <blockquote>
+                        "This system helped my child recover and grow stronger! We now have the energy to play, learn, and dream big."
+                    </blockquote>
+                    <cite>– Ramesh01</cite>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-avatar">👦</div>
+                    <blockquote>
+                        "I used to worry about my next meal, but now I can focus on my dreams. Thank you, FeedHope! You've given me hope for a brighter future."
+                    </blockquote>
+                    <cite>– Sonu_34</cite>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-avatar">👩</div>
+                    <blockquote>
+                        "With FeedHope, we not only receive food but also the strength to dream bigger. It's a lifeline for many families like mine, turning our struggles into stories of triumph."
+                    </blockquote>
+                    <cite>– Priya_22</cite>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="resources-section">
+        <div class="section-container">
+            <h2>Educational Resources</h2>
+            <div class="resources-grid">
+                <a href="https://www.who.int/health-topics/malnutrition#tab=tab_1" class="resource-card" target="_blank">
+                    <div class="resource-icon">📖</div>
+                    <h3>Nutrition Guidelines</h3>
+                    <p>Comprehensive nutrition information from WHO</p>
+                </a>
+                
+                <a href="https://www.who.int/news-room/fact-sheets/detail/malnutrition" class="resource-card" target="_blank">
+                    <div class="resource-icon">🌍</div>
+                    <h3>Global Health Report</h3>
+                    <p>Latest malnutrition statistics and insights</p>
+                </a>
+                
+                <a href="https://www.youtube.com/watch?v=XMcab1MFaLc" class="resource-card" target="_blank">
+                    <div class="resource-icon">🎥</div>
+                    <h3>Healthy Diet Video</h3>
+                    <p>Visual guide to building healthy eating habits</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="section-container">
+            <h2>Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Ready to Make a Difference?</h3>
+                    <p>Join our mission to combat malnutrition and give every child the nutrition they deserve.</p>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <span class="contact-icon">📧</span>
+                            <span>contact@feedhope.org</span>
+                        </div>
+                        <div class="contact-method">
+                            <span class="contact-icon">📞</span>
+                            <span>+1 (555) FEEDHOPE</span>
+                        </div>
+                        <div class="contact-method">
+                            <span class="contact-icon">📍</span>
+                            <span>Building Hope, Worldwide</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="contactName">Name</label>
+                        <input type="text" id="contactName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Email</label>
+                        <input type="email" id="contactEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Message</label>
+                        <textarea id="contactMessage" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-cta">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>FeedHope</h3>
+                    <p class="footer-tagline">✨ <em>"Because Every Child Deserves a Strong Tomorrow."</em></p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#about">About Us</a></li>
+                            <li><a href="#detection">Detection System</a></li>
+                            <li><a href="#user-guide">User Guide</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="#resources">Educational Materials</a></li>
+                            <li><a href="#stories">Success Stories</a></li>
+                            <li><a href="#contact">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>Connect</h4>
+                        <div class="social-links">
+                            <a href="#" class="social-link">📘</a>
+                            <a href="#" class="social-link">🐦</a>
+                            <a href="#" class="social-link">📸</a>
+                            <a href="#" class="social-link">💼</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 FeedHope: Fueling Futures. All rights reserved. Built with ❤️ for every child.</p>
+            </div>
+        </div>
+    </footer>
+
+ <script src="{{ url_for('static', filename='js/feedhope-animations.js') }}"></script>
+</body>
+</html>
