@@ -1,0 +1,670 @@
+/* Enhanced Hero Section with Scroll-Triggered Girl Animation */
+
+/* ===== HERO SECTION OVERRIDE ===== */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background: linear-gradient(135deg, #E8F5E8 0%, #F0F8FF 50%, #E8F5E8 100%);
+    overflow: hidden;
+    padding-top: 100px;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(76, 175, 80, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(33, 150, 243, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(255, 193, 7, 0.05) 0%, transparent 50%);
+}
+
+.hero-container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    min-height: 70vh;
+}
+
+/* ===== HERO TEXT CONTENT ===== */
+.hero-text {
+    animation: fadeInUp 1s ease;
+}
+
+.hero-message {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.hero-title {
+    font-size: 3.2rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    font-family: var(--font-primary);
+    transition: all 0.8s ease;
+}
+
+.sad-message {
+    color: #D32F2F;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.happy-message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #4CAF50;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Text transformation states */
+.hero.transformed .sad-message {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+.hero.transformed .happy-message {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hero-description {
+    font-size: 1.3rem;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    position: relative;
+}
+
+.sad-description {
+    color: #757575;
+    opacity: 1;
+    transition: all 0.8s ease;
+}
+
+.happy-description {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #2E7D32;
+    opacity: 0;
+    transition: all 0.8s ease;
+}
+
+.hero.transformed .sad-description {
+    opacity: 0;
+}
+
+.hero.transformed .happy-description {
+    opacity: 1;
+}
+
+.hero-cta {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease 1.2s forwards;
+}
+
+/* Updated bowl icon for CTA */
+.bowl-icon {
+    width: 24px;
+    height: 24px;
+    background: #FFC107;
+    border-radius: 50%;
+    position: relative;
+    flex-shrink: 0;
+    margin-right: 0.5rem;
+}
+
+.bowl-icon::after {
+    content: '🍲';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+}
+
+/* ===== HERO GIRL ILLUSTRATION (6-8 years old) ===== */
+.hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 600px;
+}
+
+.hero-girl-illustration {
+    position: relative;
+    width: 350px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-slow);
+}
+
+.hero-girl-character {
+    position: relative;
+    z-index: 3;
+    transition: all 0.8s ease;
+}
+
+/* Girl Head (6-8 years old proportions) - Small Indian Girl */
+.hero-girl-head {
+    width: 160px;
+    height: 160px;
+    background: #D4A574; /* Indian skin tone */
+    border-radius: 50%;
+    position: relative;
+    margin-bottom: 12px;
+    border: 3px solid #C19A5B; /* Darker border for Indian skin */
+    transition: all 0.8s ease;
+    /* Signs of malnutrition - slightly sunken appearance */
+    box-shadow: inset 0 8px 16px rgba(0,0,0,0.1);
+}
+
+/* Hair - Indian girl's dark hair, showing signs of malnutrition (less lustrous) */
+.hero-girl-hair {
+    position: absolute;
+    top: -8px;
+    left: 5px;
+    right: 5px;
+    height: 100px;
+    background: #2C1810; /* Dark Indian hair */
+    border-radius: 80px 80px 60px 60px;
+    z-index: -1;
+    border: 3px solid #1A0F08;
+    /* Slightly dull appearance indicating malnutrition */
+    opacity: 0.9;
+}
+
+.hero-girl-hair::before {
+    content: '';
+    position: absolute;
+    top: 25px;
+    left: -20px;
+    width: 45px;
+    height: 60px;
+    background: #2C1810; /* Dark Indian hair */
+    border-radius: 30px;
+    transform: rotate(-20deg);
+    border: 2px solid #1A0F08;
+    opacity: 0.9;
+}
+
+.hero-girl-hair::after {
+    content: '';
+    position: absolute;
+    top: 25px;
+    right: -20px;
+    width: 45px;
+    height: 60px;
+    background: #2C1810; /* Dark Indian hair */
+    border-radius: 30px;
+    transform: rotate(20deg);
+    border: 2px solid #1A0F08;
+    opacity: 0.9;
+}
+
+/* Eyes */
+.hero-girl-eyes {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 30px;
+}
+
+.hero-eye {
+    width: 16px;
+    height: 16px;
+    background: #2C2C2C;
+    border-radius: 50%;
+    position: relative;
+    transition: all 0.6s ease;
+}
+
+/* Sad eyes (droopy) */
+.hero-eye::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: 8px;
+    border: 2px solid #2C2C2C;
+    border-top: none;
+    border-radius: 0 0 16px 16px;
+    opacity: 1;
+    transition: all 0.6s ease;
+}
+
+/* Happy eyes transformation */
+.hero.transformed .hero-eye::before {
+    opacity: 0;
+}
+
+.hero.transformed .hero-eye::after {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: -4px;
+    right: -4px;
+    bottom: 4px;
+    border: 2px solid #2C2C2C;
+    border-bottom: none;
+    border-radius: 16px 16px 0 0;
+    opacity: 1;
+}
+
+.hero-eye::after {
+    opacity: 0;
+    transition: all 0.6s ease;
+}
+
+/* Mouth */
+.hero-girl-mouth {
+    position: absolute;
+    top: 85px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25px;
+    height: 12px;
+    border: 3px solid #E57373;
+    border-top: none;
+    border-radius: 0 0 25px 25px;
+    background: transparent;
+    transform-origin: center;
+    transition: all 0.8s ease;
+    /* Sad mouth initially */
+    transform: translateX(-50%) rotate(180deg) scaleY(0.8);
+}
+
+/* Happy mouth transformation */
+.hero.transformed .hero-girl-mouth {
+    transform: translateX(-50%) rotate(0deg) scaleY(1);
+    background: #FFB3BA;
+    width: 35px;
+    height: 18px;
+    border-color: #FF6B6B;
+}
+
+/* Cheeks */
+.hero-girl-cheeks {
+    position: absolute;
+    top: 70px;
+    left: 20px;
+    width: 16px;
+    height: 16px;
+    background: rgba(255, 107, 107, 0.3);
+    border-radius: 50%;
+    box-shadow: 100px 0 0 rgba(255, 107, 107, 0.3);
+    opacity: 0;
+    transition: all 0.8s ease;
+}
+
+.hero.transformed .hero-girl-cheeks {
+    opacity: 1;
+}
+
+/* Tears (visible in sad state) */
+.hero-tears {
+    position: absolute;
+    top: 75px;
+    width: 100%;
+    opacity: 1;
+    transition: all 0.8s ease;
+}
+
+.hero.transformed .hero-tears {
+    opacity: 0;
+}
+
+.hero-tear {
+    position: absolute;
+    width: 8px;
+    height: 15px;
+    background: #87CEEB;
+    border-radius: 50% 0 50% 50%;
+    animation: tearDrop 2s ease infinite;
+}
+
+.tear-left {
+    left: 35px;
+    animation-delay: 0s;
+}
+
+.tear-right {
+    right: 35px;
+    animation-delay: 1s;
+}
+
+/* Body (6-8 years old proportions) - Indian girl with malnutrition signs */
+.hero-girl-body {
+    width: 115px; /* Slightly smaller to show malnutrition */
+    height: 140px;
+    background: #D4824D; /* Earthy tone suitable for Indian clothing */
+    border-radius: 20px 20px 12px 12px;
+    position: relative;
+    border: 3px solid #B8703D;
+    margin-bottom: 8px;
+    transition: all 0.8s ease;
+    /* Subtle inward shadow to suggest thinness */
+    box-shadow: inset 0 8px 16px rgba(0,0,0,0.15);
+}
+
+/* Body becomes brighter when happy */
+.hero.transformed .hero-girl-body {
+    background: #FFC107;
+    border-color: #FF8F00;
+    box-shadow: 0 0 20px rgba(255, 193, 7, 0.3);
+}
+
+/* Simple pattern on dress */
+.hero-girl-body::before {
+    content: '';
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    background: #F57C00;
+    border-radius: 50%;
+    box-shadow: 
+        0 20px 0 #F57C00,
+        0 40px 0 #F57C00,
+        -15px 10px 0 #F57C00,
+        15px 10px 0 #F57C00,
+        -15px 30px 0 #F57C00,
+        15px 30px 0 #F57C00;
+}
+
+/* Arms */
+.hero-girl-arms {
+    position: absolute;
+    top: 25px;
+    width: 100%;
+    height: 70px;
+    z-index: 2;
+}
+
+.hero-arm {
+    position: absolute;
+    width: 26px; /* Slightly thinner arms indicating malnutrition */
+    height: 65px;
+    background: #D4A574; /* Indian skin tone */
+    border-radius: 15px;
+    border: 2px solid #C19A5B;
+    transition: all 0.8s ease;
+    /* Subtle shadow to show thinness */
+    box-shadow: inset 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.left-arm {
+    left: -18px;
+    top: 5px;
+    transform: rotate(-25deg);
+    transform-origin: top center;
+}
+
+.right-arm {
+    right: -18px;
+    top: 5px;
+    transform: rotate(25deg);
+    transform-origin: top center;
+}
+
+/* Arms become more animated when happy */
+.hero.transformed .left-arm {
+    transform: rotate(-15deg);
+    animation: gentleWave 3s ease-in-out infinite;
+}
+
+.hero.transformed .right-arm {
+    transform: rotate(15deg);
+    animation: gentleWave 3s ease-in-out infinite 0.5s;
+}
+
+/* Legs */
+.hero-girl-legs {
+    display: flex;
+    gap: 12px;
+    margin-top: 5px;
+    justify-content: center;
+}
+
+.hero-leg {
+    width: 30px; /* Slightly thinner legs indicating malnutrition */
+    height: 100px;
+    background: #D4A574; /* Indian skin tone */
+    border-radius: 16px;
+    border: 2px solid #C19A5B;
+    position: relative;
+    /* Subtle shadow to show thinness */
+    box-shadow: inset 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Shoes */
+.hero-leg::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: -6px;
+    width: 44px;
+    height: 18px;
+    background: #8D4E2A;
+    border-radius: 22px;
+    border: 2px solid #6D4C41;
+}
+
+/* ===== SPARKLES AND EFFECTS ===== */
+.hero-sparkles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
+    transition: all 0.8s ease;
+}
+
+.hero.transformed .hero-sparkles {
+    opacity: 1;
+}
+
+.hero-sparkle {
+    position: absolute;
+    font-size: 20px;
+    animation: sparkleFloat 4s ease-in-out infinite;
+}
+
+.sparkle-1 {
+    top: 15%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.sparkle-2 {
+    top: 25%;
+    right: 15%;
+    animation-delay: 1s;
+}
+
+.sparkle-3 {
+    bottom: 35%;
+    left: 20%;
+    animation-delay: 2s;
+}
+
+.sparkle-4 {
+    bottom: 25%;
+    right: 20%;
+    animation-delay: 3s;
+}
+
+/* Hope Aura */
+.hero-hope-aura {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(76, 175, 80, 0.1) 0%,
+        rgba(255, 193, 7, 0.1) 50%,
+        transparent 100%
+    );
+    opacity: 0;
+    transition: all 1s ease;
+    animation: auraPulse 4s ease-in-out infinite;
+}
+
+.hero.transformed .hero-hope-aura {
+    opacity: 1;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes tearDrop {
+    0% { transform: translateY(0) scaleY(1); opacity: 0.8; }
+    50% { transform: translateY(25px) scaleY(1.3); opacity: 0.6; }
+    100% { transform: translateY(50px) scaleY(1); opacity: 0; }
+}
+
+@keyframes sparkleFloat {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.7;
+    }
+    25% {
+        transform: translateY(-20px) rotate(90deg);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-10px) rotate(180deg);
+        opacity: 0.8;
+    }
+    75% {
+        transform: translateY(-25px) rotate(270deg);
+        opacity: 1;
+    }
+}
+
+@keyframes auraPulse {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 0.6;
+    }
+}
+
+@keyframes gentleWave {
+    0%, 100% {
+        transform: rotate(15deg);
+    }
+    50% {
+        transform: rotate(25deg);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .hero-text {
+        order: 2;
+    }
+    
+    .hero-visual {
+        order: 1;
+        height: 400px;
+    }
+    
+    .hero-girl-illustration {
+        width: 280px;
+        height: 360px;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-girl-head {
+        width: 130px;
+        height: 130px;
+    }
+    
+    .hero-girl-body {
+        width: 100px;
+        height: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-girl-illustration {
+        width: 220px;
+        height: 300px;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-girl-head {
+        width: 110px;
+        height: 110px;
+    }
+    
+    .hero-girl-body {
+        width: 85px;
+        height: 100px;
+    }
+    
+    .hero-cta {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
